@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Link } from 'expo-router';
 
 
-export default function index() {
+export default function singup() {
     const [flag, setFlag] = useState(false)
 
     return (
         <View style={styles.wrapper}>
-            <Text style={styles.textLogin}>Login</Text>
+            <Text style={styles.textLogin}>Singup</Text>
             <View style={styles.wrapperBtn}>
                 <TouchableOpacity style={styles.btn}>
                     <ImgGoogle></ImgGoogle>
@@ -24,15 +24,25 @@ export default function index() {
             <View style={styles.wrapperBtn}>
                 <View style={styles.wrapperInput}>
                     <View style={styles.inpAndTitle}>
+                        <Text style={styles.title}>Full Name</Text>
+                        <TextInput placeholder='Becca Ade' placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
+                    </View>
+
+                    <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Email Addess</Text>
                         <TextInput placeholder='Email' placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
                     </View>
                     <View style={styles.inpAndTitle}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.title}>Password</Text>
-                            <Text style={{ color: '#1443C3' }}>Forgot Password</Text>
                         </View>
                         <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
+                    </View>
+                    <View style={styles.inpAndTitle}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Text style={styles.title}>Confirm Password</Text>
+                        </View>
+                        <TextInput placeholder='Confirm Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
                     </View>
                 </View>
             </View>
@@ -41,20 +51,21 @@ export default function index() {
                     <TouchableOpacity onPress={() => setFlag(!flag)} style={styles.checkbox}>
                         {flag ? <Shape style={styles.checkboxChecked}></Shape> : <View style={styles.checkboxUnchecked} />}
                     </TouchableOpacity>
-                    <Text style={styles.label}>Keep me signed in</Text>
+                    <Text style={styles.label}>By Creating an Account, i accept Hiring Hub terms of Use and Privacy Policy</Text>
                 </View>
                 <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={styles.buttonText}>Signup</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text>Don’t have an Account? </Text>
-                <Link href={'/singup'}>
-                    <Text style={{ color: '#1443C3' }}>Sign up here</Text>
+                <Link href={'/'}>
+                    <Text style={{ color: '#1443C3' }}>Have an Account?</Text>
                 </Link>
             </View>
         </View>
+
     );
 }
 
