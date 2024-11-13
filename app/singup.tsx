@@ -25,7 +25,7 @@ export default function singup() {
                 <View style={styles.wrapperInput}>
                     <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Full Name</Text>
-                        <TextInput placeholder='Becca Ade' placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Name' placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
                     </View>
 
                     <View style={styles.inpAndTitle}>
@@ -53,8 +53,8 @@ export default function singup() {
                     </TouchableOpacity>
                     <Text style={styles.label}>By Creating an Account, i accept Hiring Hub terms of Use and Privacy Policy</Text>
                 </View>
-                <TouchableOpacity style={styles.btnLogin}>
-                    <Text style={styles.buttonText}>Signup</Text>
+                <TouchableOpacity style={[styles.btnLogin, !flag && styles.btnLoginDisabled]} disabled={!flag} >
+                    <Text style={[styles.buttonText, !flag && styles.buttonTextDisabled]}>Signup</Text>
                 </TouchableOpacity>
             </View>
 
@@ -155,13 +155,13 @@ const styles = StyleSheet.create({
         height: 18,
     },
     checkboxUnchecked: {
-		borderWidth: 1,
-		borderColor: '#12ae97',
-		borderRadius: 3,
-		width: 18,
-		height: 18,
-		backgroundColor: '#FFF',
-	},
+        borderWidth: 1,
+        borderColor: '#12ae97',
+        borderRadius: 3,
+        width: 18,
+        height: 18,
+        backgroundColor: '#FFF',
+    },
     label: {
         fontSize: 16,
     },
@@ -177,5 +177,11 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#FEFEFE',
-    }
+    },
+    btnLoginDisabled: {
+        backgroundColor: '#B0B0B0',
+    },
+    buttonTextDisabled: {
+        color: '#515151',
+    },
 })
