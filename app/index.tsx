@@ -6,6 +6,8 @@ import { Link } from 'expo-router';
 
 
 export default function index() {
+    const [email, setEmail] = useState(''); 
+    const [password, setPassword] = useState('');
     const [flag, setFlag] = useState(false)
 
     return (
@@ -25,14 +27,14 @@ export default function index() {
                 <View style={styles.wrapperInput}>
                     <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Email Addess</Text>
-                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'}  value={email} onChangeText={setEmail} style={styles.inp}></TextInput>
                     </View>
                     <View style={styles.inpAndTitle}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.title}>Password</Text>
                             <Text style={{ color: '#1443C3' }}>Forgot Password</Text>
                         </View>
-                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} value={password} onChangeText={setPassword}style={styles.inp}></TextInput>
                     </View>
                 </View>
             </View>
@@ -144,13 +146,13 @@ const styles = StyleSheet.create({
         height: 18,
     },
     checkboxUnchecked: {
-		borderWidth: 1,
-		borderColor: '#12ae97',
-		borderRadius: 3,
-		width: 18,
-		height: 18,
-		backgroundColor: '#FFF',
-	},
+        borderWidth: 1,
+        borderColor: '#12ae97',
+        borderRadius: 3,
+        width: 18,
+        height: 18,
+        backgroundColor: '#FFF',
+    },
     label: {
         fontSize: 16,
     },
