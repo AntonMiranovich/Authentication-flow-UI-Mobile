@@ -64,7 +64,7 @@ export default function singup() {
 
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text>Don’t have an Account? </Text>
-                <Link href={'/'}>
+                <Link href={'/verification'}>
                     <Text style={{ color: '#1443C3' }}>Have an Account?</Text>
                 </Link>
             </View>

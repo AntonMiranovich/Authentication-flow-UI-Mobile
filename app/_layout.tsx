@@ -9,6 +9,8 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="/"/>
         <Stack.Screen name="/signup"/>
+        <Stack.Screen name='/verification' />
+        <Stack.Screen name='/forgotPassword' />
         <Stack.Screen name="+not-found" />
       </Stack>
   );
