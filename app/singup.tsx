@@ -6,11 +6,26 @@ import { Link } from 'expo-router';
 
 
 export default function singup() {
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [flag, setFlag] = useState(false)
+
+    const [user, setUser] = useState({ fullName: '', email: '', password: '' })
+
+    const changesUser = (value: any, tag: any) => {
+        setUser({ ...user, [tag]: value });
+    };
+
+
+    const checkEmail = () => {
+        try {
+            if (!/^\w+@[a-z]+\.[a-z]{2,5}/gm.test(user.email)) throw new Error('this email invalid');
+            console.log(user);
+
+        } catch (error: any) {
+            console.log(error.message);
+
+        }
+    }
 
     return (
         <View style={styles.wrapper}>
@@ -29,18 +44,18 @@ export default function singup() {
                 <View style={styles.wrapperInput}>
                     <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Full Name</Text>
-                        <TextInput placeholder='Name' placeholderTextColor={'#BABABA'} value={fullName} onChangeText={setFullName} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Name' placeholderTextColor={'#BABABA'} onChangeText={(value) => changesUser(value, 'fullName')} style={styles.inp}></TextInput>
                     </View>
 
                     <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Email Addess</Text>
-                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'} value={email} onChangeText={setEmail} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'} onChangeText={(value) => changesUser(value, 'email')} style={styles.inp}></TextInput>
                     </View>
                     <View style={styles.inpAndTitle}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.title}>Password</Text>
                         </View>
-                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} value={password} onChangeText={setPassword} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} onChangeText={(value) => changesUser(value, 'password')} style={styles.inp}></TextInput>
                     </View>
                     <View style={styles.inpAndTitle}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -57,7 +72,7 @@ export default function singup() {
                     </TouchableOpacity>
                     <Text style={styles.label}>By Creating an Account, i accept Hiring Hub terms of Use and Privacy Policy</Text>
                 </View>
-                <TouchableOpacity style={[styles.btnLogin, !flag && styles.btnLoginDisabled]} disabled={!flag} >
+                <TouchableOpacity onPress={checkEmail} style={[styles.btnLogin, !flag && styles.btnLoginDisabled]} disabled={!flag} >
                     <Text style={[styles.buttonText, !flag && styles.buttonTextDisabled]}>Signup</Text>
                 </TouchableOpacity>
             </View>
@@ -69,7 +84,6 @@ export default function singup() {
                 </Link>
             </View>
         </View>
-
     );
 }
 

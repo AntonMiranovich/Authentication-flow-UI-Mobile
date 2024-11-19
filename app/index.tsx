@@ -6,9 +6,15 @@ import { Link } from 'expo-router';
 
 
 export default function index() {
-    const [email, setEmail] = useState(''); 
-    const [password, setPassword] = useState('');
+    const [user, setUser] = useState({ email: '', password: '' })
     const [flag, setFlag] = useState(false)
+
+    const changesUser = (value: any, tag: any) => {
+        setUser({ ...user, [tag]: value });
+    };
+
+
+
 
     return (
         <View style={styles.wrapper}>
@@ -27,14 +33,14 @@ export default function index() {
                 <View style={styles.wrapperInput}>
                     <View style={styles.inpAndTitle}>
                         <Text style={styles.title}>Email Addess</Text>
-                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'}  value={email} onChangeText={setEmail} style={styles.inp}></TextInput>
+                        <TextInput placeholder='Email' placeholderTextColor={'#BABABA'} onChangeText={(value) => changesUser(value, 'email')} style={styles.inp}></TextInput>
                     </View>
                     <View style={styles.inpAndTitle}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={styles.title}>Password</Text>
                             <Text style={{ color: '#1443C3' }}>Forgot Password</Text>
                         </View>
-                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} value={password} onChangeText={setPassword}style={styles.inp}></TextInput>
+                        <TextInput placeholder='Password' secureTextEntry={true} placeholderTextColor={'#BABABA'} onChangeText={(value) => changesUser(value, 'password')} style={styles.inp}></TextInput>
                     </View>
                 </View>
             </View>
